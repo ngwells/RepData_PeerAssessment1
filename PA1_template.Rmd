@@ -5,7 +5,8 @@ output: "below"
   html_document: PA1_template.html
     keep_md: true
 ---
-# Nathan's Peer Assessment 1 for Coursea.
+# Nathan's Peer Assessment 1 for Cousera Course 4
+
 
 
 ## Loading and preprocessing the data
