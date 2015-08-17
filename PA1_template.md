@@ -125,31 +125,29 @@ This dataset contains imputed missing values.
 ### Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. 
 
 
-Here is a new historgram with the new (completedata) data set.
+HereWhy the hell not...lets build this on the data from the previous section.
+
+
 
 ```r
-hist(totalstepdata2$totalsteps,breaks=10)
+weekenddata<-completedata[completedata$weekend==1,]
+weekdaydata<-completedata[completedata$weekend==0,]
+
+meanstepdataWE<-weekenddata %>% group_by(interval) %>% summarise(totalstepsWE=mean(steps))
+meanstepdataWD<-weekdaydata %>% group_by(interval) %>% summarise(totalstepsWD=mean(steps))
+
+par(mfrow=c(2,1))
+plot(meanstepdataWE$interval,meanstepdataWE$totalsteps,typ="l", main="Weekend Interval Data", xlab="Average steps per 5 min Interval",ylab="Average Total Steps")
+plot(meanstepdataWD$interval,meanstepdataWD$totalsteps,typ="l", main="Weekday Interval Data", xlab="Average steps per 5 min Interval",ylab="Average Total Steps")
 ```
 
-```
-## Error in hist(totalstepdata2$totalsteps, breaks = 10): object 'totalstepdata2' not found
-```
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
-```r
-stepmean2<-mean(totalstepdata2$totalsteps)
-```
+That plot is hot.
 
-```
-## Error in mean(totalstepdata2$totalsteps): object 'totalstepdata2' not found
-```
+Thanks for enjoying.
 
-```r
-stepmedian2<-median(totalstepdata2$totalsteps)
-```
-
-```
-## Error in median(totalstepdata2$totalsteps): object 'totalstepdata2' not found
-```
+Nathan
 
 
 
