@@ -13,7 +13,13 @@ output: "below"
 
 ```r
 setwd("C:/Users/Brian/Documents/COURSERA/class4week2")
+```
 
+```
+## Error in setwd("C:/Users/Brian/Documents/COURSERA/class4week2"): cannot change working directory
+```
+
+```r
 dataset<-read.csv("activity.csv")
 #dataset$date<-as.Date(dataset$date)
 dataset2<-na.omit(dataset)
@@ -125,7 +131,54 @@ This dataset contains imputed missing values.
 ### Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. 
 
 
-HereWhy the hell not...lets build this on the data from the previous section.
+Here is a new historgram with the new (completedata) data set.
+
+```r
+hist(totalstepdata2$totalsteps,breaks=10)
+```
+
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+
+```r
+stepmean2<-mean(totalstepdata2$totalsteps)
+stepmedian2<-median(totalstepdata2$totalsteps)
+```
+The mean number of the imputed total steps per day is 10766.19.
+The median number of the imputed total steps per day is 10766.19.
+
+
+### Do these values differ from the estimates from the first part of the assignment? 
+
+
+```r
+diffmean<-stepmean-stepmean2
+diffmed<-stepmedian-stepmedian2
+```
+
+The difference in the mean is 0. 
+The difference in the median is -1.1886792.
+There is very little difference.
+
+### What is the impact of imputing missing data on the estimates of the total daily number of steps?
+By using the averages - we're essential doubling up data so the overage averages will still remain constant. Our stragetgy had little impact on the overall mean of the data. The st. dev. will be reduced, since we do not have as much variance around the mean.
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?
+### Create a new factor variable in the dataset with two levels � �weekday� and �weekend� indicating whether a given date is a weekday or weekend day.
+Not a problem. see below. I'm using the imputed data because  - why not - there appears to be no specific directions for this.
+
+```r
+completedata$day<-weekdays(as.Date(dataset$date))
+
+for( i in 1:dim(completedata)[1])
+{
+if(completedata$day[i] %in% c("Saturday","Sunday"))(completedata$weekend[i]<-1)else{completedata$weekend[i]<-0}
+}
+```
+
+### Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
+Why the hell not...lets build this on the data from the previous section.
 
 
 
@@ -148,10 +201,3 @@ That plot is hot.
 Thanks for enjoying.
 
 Nathan
-
-
-
-
-
-
-

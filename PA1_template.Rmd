@@ -130,7 +130,7 @@ By using the averages - we're essential doubling up data so the overage averages
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-### Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
+### Create a new factor variable in the dataset with two levels ï¿½ ï¿½weekdayï¿½ and ï¿½weekendï¿½ indicating whether a given date is a weekday or weekend day.
 Not a problem. see below. I'm using the imputed data because  - why not - there appears to be no specific directions for this.
 ```{r}
 
